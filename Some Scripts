@@ -37,8 +37,8 @@ Set-Acl "C:\Users\Public\Desktop\TSOM" $acl
 # 2.0 Install and configure DHCP
 Install-WindowsFeature -Name DHCP -IncludeManagementTools
 Add-DhcpServerv4Scope -Name "LAN" -StartRange 192.168.1.1 -EndRange 192.168.1.254 -SubnetMask 255.255.255.0 -LeaseDuration 2:00:00
-Set-DhcpServerv4ExclusionRange -ScopeId 192.168.1.0 -StartRange 192.168.1.1 -EndRange 192.168.1.20
-Authorize-DhcpServer
+Add-DhcpServerv4ExclusionRange -ScopeId 192.168.1.0 -StartRange 192.168.1.1 -EndRange 192.168.1.20
+Add-DhcpServerInDC
 
 # 3.0 Install Hyper-V
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
